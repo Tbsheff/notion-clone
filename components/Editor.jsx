@@ -32,6 +32,13 @@ const Editor = ({ onChange, initialContent, editable }) => {
       <BlockNoteView
         editor={editor}
         theme={resolvedTheme === "dark" ? "dark" : "light"}
+        editorProps={{
+          attributes: {
+            autoCorrect: "on",
+            spellCheck: "true",
+            autoCapitalize: "on",
+          }
+        }}
       />
     </div>
   );
