@@ -8,6 +8,12 @@ import {
   Search,
   Settings,
   Trash,
+  CheckSquare,
+  BookOpen,
+  Calendar,
+  Clock,
+  BarChart,
+  Target,
 } from "lucide-react";
 import {
   Popover,
@@ -78,7 +84,7 @@ const Navigation = () => {
       navbarRef.current.style.setProperty("left", `${newWidth}px`);
       navbarRef.current.style.setProperty(
         "width",
-        `calc(100% - ${newWidth}px)`
+        `calc(100% - ${newWidth}px)`,
       );
     }
   };
@@ -97,7 +103,7 @@ const Navigation = () => {
       sidebarRef.current.style.width = isMobile ? "100%" : "240px";
       navbarRef.current.style.setProperty(
         "width",
-        isMobile ? "0" : "calc(100% - 240px)"
+        isMobile ? "0" : "calc(100% - 240px)",
       );
       navbarRef.current.style.setProperty("left", isMobile ? "100%" : "240px");
       setTimeout(() => setIsResetting(false), 300);
@@ -118,7 +124,7 @@ const Navigation = () => {
 
   const handleCreate = () => {
     const promise = create({ title: "Untitled" }).then((documentId) =>
-      router.push(`/documents/${documentId}`)
+      router.push(`/documents/${documentId}`),
     );
 
     toast.promise(promise, {
@@ -135,7 +141,7 @@ const Navigation = () => {
         className={cn(
           "group/sidebar h-full bg-secondary overflow-y-auto relative flex w-60 flex-col z-[99999]",
           isResetting && "transition-all ease-in-out duration-300",
-          isMobile && "w-0"
+          isMobile && "w-0",
         )}
       >
         <div
@@ -143,7 +149,7 @@ const Navigation = () => {
           role="button"
           className={cn(
             "h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition",
-            isMobile && "opacity-100"
+            isMobile && "opacity-100",
           )}
         >
           <ChevronsLeft className="h-6 w-6" />
@@ -155,6 +161,56 @@ const Navigation = () => {
           <Item onClick={handleCreate} label="New page" icon={PlusCircle} />
         </div>
         <div className="mt-4">
+          <p className="text-xs font-medium text-muted-foreground mb-2 ml-4">
+            WORKSPACE
+          </p>
+          <Item
+            onClick={() => router.push("/documents")}
+            label="Documents"
+            icon={BookOpen}
+            active={pathname === "/documents"}
+          />
+          <Item
+            onClick={() => router.push("/tasks")}
+            label="Tasks"
+            icon={CheckSquare}
+            active={pathname.includes("/tasks")}
+          />
+          <Item
+            onClick={() => router.push("/courses")}
+            label="Courses"
+            icon={BookOpen}
+            active={pathname.includes("/courses")}
+          />
+          <Item
+            onClick={() => router.push("/calendar")}
+            label="Calendar"
+            icon={Calendar}
+            active={pathname.includes("/calendar")}
+          />
+          <Item
+            onClick={() => router.push("/focus")}
+            label="Focus"
+            icon={Clock}
+            active={pathname.includes("/focus")}
+          />
+          <Item
+            onClick={() => router.push("/analytics")}
+            label="Analytics"
+            icon={BarChart}
+            active={pathname.includes("/analytics")}
+          />
+          <Item
+            onClick={() => router.push("/goals")}
+            label="Goals"
+            icon={Target}
+            active={pathname.includes("/goals")}
+          />
+        </div>
+        <div className="mt-4">
+          <p className="text-xs font-medium text-muted-foreground mb-2 ml-4">
+            DOCUMENTS
+          </p>
           <DocumentList />
           <Item onClick={handleCreate} icon={Plus} label="Add a page" />
           <Popover>
@@ -181,7 +237,7 @@ const Navigation = () => {
         className={cn(
           "absolute top-0 z-[99999] left-60 w-[calc(100%-240px)]",
           isResetting && "transition-all ease-in-out duration-300",
-          isMobile && "left-0 w-full"
+          isMobile && "left-0 w-full",
         )}
       >
         <nav className="bg-transparent px-3 py-2 w-full">

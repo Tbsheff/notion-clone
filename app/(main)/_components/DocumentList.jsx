@@ -8,7 +8,7 @@ import { FileIcon } from "lucide-react";
 import { api } from "@/convex/_generated/api";
 import { cn } from "@/lib/utils";
 
-import Item from "./item";
+import Item from "./Item";
 
 const DocumentList = ({ parentDocumentId, level = 0 }) => {
   const params = useParams();
@@ -53,7 +53,7 @@ const DocumentList = ({ parentDocumentId, level = 0 }) => {
         className={cn(
           "hidden text-sm font-medium text-muted-foreground/80",
           expanded && "last:block",
-          level === 0 && "hidden"
+          level === 0 && "hidden",
         )}
       >
         No pages inside

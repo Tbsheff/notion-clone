@@ -6,7 +6,7 @@ import { MenuIcon } from "lucide-react";
 
 import { api } from "@/convex/_generated/api";
 
-import Title from "./title";
+import Title from "./Title";
 import Banner from "./Banner";
 import Menu from "./Menu";
 import Publish from "./Publish";

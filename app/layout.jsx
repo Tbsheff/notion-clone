@@ -1,11 +1,13 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
+import Script from "next/script";
 
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ConvexClientProvider } from "@/components/providers/ConvexProvider";
 import { ModalProvider } from "@/components/providers/ModalProvider";
 import { EdgeStoreProvider } from "@/lib/edgestore";
+import { TempoInit } from "./tempo-init";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,6 +35,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <head />
       <body className={inter.className}>
+        <Script src="https://api.tempo.new/proxy-asset?url=https://storage.googleapis.com/tempo-public-assets/error-handling.js" />
         <ConvexClientProvider>
           <EdgeStoreProvider>
             <ThemeProvider
@@ -44,6 +47,7 @@ export default function RootLayout({ children }) {
             >
               <Toaster position="bottom-center" />
               <ModalProvider />
+              <TempoInit />
               {children}
             </ThemeProvider>
           </EdgeStoreProvider>

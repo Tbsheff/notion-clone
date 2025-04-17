@@ -14,7 +14,10 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as calendar from "../calendar";
+import type * as courses from "../courses";
 import type * as documents from "../documents";
+import type * as tasks from "../tasks";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -25,7 +28,10 @@ import type * as documents from "../documents";
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  calendar: typeof calendar;
+  courses: typeof courses;
   documents: typeof documents;
+  tasks: typeof tasks;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,
