@@ -26,6 +26,7 @@ import {
 import Spinner from "@/components/Spinner";
 import CalendarHeader from "@/app/(main)/_components/calendar/CalendarHeader";
 import MonthView from "@/app/(main)/_components/calendar/MonthView";
+import CreateEventModal from "../../_components/calendar/CreateEventModal";
 
 const CalendarPage = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
